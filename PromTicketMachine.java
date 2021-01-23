@@ -1,6 +1,14 @@
 import java.util.Scanner;
 import java.util.ArrayList;
 
+//
+// Author: Eddie Hunter
+// Date: Jan-22-2021
+// Description: This program will allow for a list to be created and displayed, including each student's name, verification number
+//	and the number of guests they will be bringing.
+//
+
+
 class studentList {
 	public String[] participantName;
 	public String participantClass;
@@ -25,6 +33,7 @@ public class PromTicketAssign {
 	}
 
 	public static void main(String[] args) {
+		//prices
 		String[] fPrice = new String[] { "$65.00", "$98.00", "$163.00" };
 		String[] sPrice = new String[] { "$55.00", "$83.00", "$138.00" };
 		String[] jPrice = new String[] { "$45.00", "$68.00", "$113.00" };
@@ -49,7 +58,7 @@ public class PromTicketAssign {
 			//get input
 			String userAction = input.nextLine();
 			
-			if (userAction.equals("3")) break; //end program
+			if (userAction.equals("3")) break; //terminate program
 			
 			//List all students, student numbers, and number of guests
 			if (userAction.equals("2")) {
@@ -63,7 +72,10 @@ public class PromTicketAssign {
 			}
 			//Add student to list
 			if (userAction.equals("1")) {
+				//adds new item to prom list
 				classList.add(new studentList());
+				
+				//asks for student name
 				System.out.println("What is the name of the student? \n"
 						+ "  - [example: \'John Doe]\'");
 				
@@ -72,6 +84,7 @@ public class PromTicketAssign {
 				
 				boolean selectedCorrectly = false;
 				
+				//asks for class until correct input is given
 				while (!selectedCorrectly) {
 					System.out.println("  - Freshman \n"
 							+ "  - Sophomore \n"
@@ -91,7 +104,7 @@ public class PromTicketAssign {
 				}
 				
 				selectedCorrectly = false;
-				
+				//asks for group size until correct input is given
 				while (!selectedCorrectly) {
 					System.out.println("You've selected " + classList.get(saleCount).participantClass + "! \n"
 							+ "How many guests will you be bringing? \n"
@@ -109,6 +122,8 @@ public class PromTicketAssign {
 					if (selectedCorrectly) break;
 				}
 				
+				//Spaghetti code, but it works
+				//Returns the final price
 				if (classList.get(saleCount).participantClass.toUpperCase().equals("FRESHMAN")) {
 					if (classList.get(saleCount).groupSize.equals("1")) finalPrice = fPrice[0];
 					if (classList.get(saleCount).groupSize.equals("2")) finalPrice = fPrice[1];
